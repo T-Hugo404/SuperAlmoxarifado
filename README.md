@@ -163,9 +163,7 @@ O projeto está configurado para usar SQLite3 em desenvolvimento. Para produçã
 
 ## 🐛 Erros do Sistema
 
-## Nota: Caetano, sei que fazer um sistema é muito fácil para você, então para não te deixar entedidado, deixei alguns problemas para você resolver.
-
-1. Os aplicativos estão comentados no settings.py, descomente-os e resolva o problema deles (talvez tenha a ver com o 'name' no apps.py) ;
+## Nota: Talisson, sinto muito mas não consegui resolver os arquivos inúteis, deixo para você.
 
 2. Mandei alguns arquivos inúteis para o git. Dê um jeito de evitar isso
 

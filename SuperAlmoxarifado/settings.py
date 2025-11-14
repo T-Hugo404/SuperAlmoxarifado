@@ -41,13 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     #Usuarios do sistema
-    #'apps.fornecedores',
-    #'apps.usuarios',
+    'apps.fornecedores',
+    'apps.usuarios',
     
     #Controle de itens
-    #'apps.produtos',
-    #'apps.retirada',
-    #'apps.pedidos',
+    'apps.produtos',
+    'apps.retirada',
+    'apps.pedidos',
     
 ]
 
