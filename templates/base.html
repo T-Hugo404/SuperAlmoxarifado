@@ -1,0 +1,64 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Super Almoxarifado{% endblock %}</title>
+    
+    <!-- Um pouco de CSS básico para não ficar totalmente sem estilo -->
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        header { background-color: #333; color: #fff; padding: 1rem; }
+        nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 15px; }
+        nav a { color: #fff; text-decoration: none; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        main { padding: 20px; max-width: 1200px; margin: 0 auto; background: white; min-height: 80vh; }
+        footer { text-align: center; padding: 10px; background-color: #ddd; margin-top: 20px; }
+        .btn { padding: 5px 10px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Super Almoxarifado</h2>
+            
+            {% if user.is_authenticated %}
+                <span>Olá, {{ user.username }} | <a href="#" style="color: #aaa;">Sair</a></span>
+            {% else %}
+                <a href="#" style="color: white;">Login</a>
+            {% endif %}
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="/">Início</a></li>
+                <!-- Link para a sua view de fornecedores -->
+                <li><a href="{% url 'lista_fornecedores' %}">Fornecedores</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Pedidos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Aqui é onde o Django vai injetar o conteúdo das outras páginas -->
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% block conteudo %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Super Almoxarifado - Sistema de Gestão</p>
+    </footer>
+
+</body>
+</html>

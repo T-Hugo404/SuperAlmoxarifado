@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    <h1>Cadastrar Novo Fornecedor</h1>
+
+    <form method='post'>
+        {% csrf_token %}
+
+        <p>Por favor, preencha os dados abaixo:</p>
+        {{ form.as_p }}
+
+        <button type="submit">Salvar Fornecedor</button>
+
+    </form>
+{% endblock %}
