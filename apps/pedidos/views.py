@@ -16,9 +16,9 @@ def cadastrar_pedido(request):
         form = PedidoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('lista_fornecedores')
+            return redirect('lista_pedidos')
         
     else:
         form = PedidoForm()
 
-    return render(request, 'fornecedores/cadastro.html', {'form': form})
+    return render(request, 'cadastro.html', {'form': form})
