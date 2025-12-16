@@ -2,11 +2,11 @@
 {% block conteudo %}
 
 <h1>Lista Produtos</h1>
-<a href="{% url 'cadastrar_fornecedor' %}">CADASTRAR NOVO PRODUTO</a>
+<a href="{% url 'cadastrar_produto' %}">CADASTRAR NOVO PRODUTO</a>
 <ul>
     {% for produto in produtos %}
         <li>
-            {{ produto.nome_empresa }} ({{ produto.email | lower }}) | 
+            {{ produto.nome }} ({{ produto.quantidade_em_estoque | lower }}) | 
             <a href="{% url 'editar_produto' produto.id %}">EDITART</a> | 
 
             <form action= "{% url 'excluir_produto' produto.id %}" method="POST">

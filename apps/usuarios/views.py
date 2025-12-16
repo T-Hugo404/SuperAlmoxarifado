@@ -8,7 +8,7 @@ def lista_usuarios(request):
     usuarios = Usuario.objects.all()
 
     context = {'usuarios': usuarios}
-    return render(request, 'lista.html', context)
+    return render(request, 'usuarios/lista.html', context)
 
 
 def cadastrar_usuario(request):
@@ -21,7 +21,7 @@ def cadastrar_usuario(request):
     else:
         form = UsuarioForm()
 
-    return render(request, 'cadastro.html', {'form': form})
+    return render(request, 'usuarios/cadastro.html', {'form': form})
 
 
 def editar_usuario(request, usuario_id):
@@ -37,7 +37,7 @@ def editar_usuario(request, usuario_id):
     else:
         form = UsuarioForm(instance=usuario)
 
-    return render(request, 'cadastro.html', {'form': form})
+    return render(request, 'usuarios/cadastro.html', {'form': form})
 
 
 def excluir_usuario(request, usuario_id):
@@ -48,4 +48,4 @@ def excluir_usuario(request, usuario_id):
         usuario.delete()
         return redirect('lista_usuarios')
 
-    return render(request, 'lista.html')
+    return render(request, 'usuarios/lista.html')

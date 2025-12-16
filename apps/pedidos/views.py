@@ -8,7 +8,7 @@ def lista_pedidos(request):
     pedidos = Pedido.objects.all()
 
     context = {'pedidos': pedidos}
-    return render(request, 'lista.html', context)
+    return render(request, 'pedidos/lista.html', context)
 
 
 def cadastrar_pedido(request):
@@ -21,7 +21,7 @@ def cadastrar_pedido(request):
     else:
         form = PedidoForm()
 
-    return render(request, 'cadastro.html', {'form': form})
+    return render(request, 'pedidos/cadastro.html', {'form': form})
 
 
 def editar_pedido(request, pedido_id):
@@ -37,7 +37,7 @@ def editar_pedido(request, pedido_id):
     else:
         form = PedidoForm(instance=pedido)
 
-    return render(request, 'cadastro.html', {'form': form})
+    return render(request, 'pedidos/cadastro.html', {'form': form})
 
 
 def excluir_pedido(request, pedido_id):
@@ -48,4 +48,4 @@ def excluir_pedido(request, pedido_id):
         pedido.delete()
         return redirect('lista_pedidos')
 
-    return render(request, 'lista.html')
+    return render(request, 'pedidos/lista.html')

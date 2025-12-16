@@ -9,7 +9,7 @@ def lista_retiradas(request):
     retiradas = Retirada.objects.all()
 
     context = {'retiradas': retiradas}
-    return render(request, 'lista.html', context)
+    return render(request, 'retirada/lista.html', context)
 
 
 def cadastrar_retirada(request):
@@ -22,7 +22,7 @@ def cadastrar_retirada(request):
     else:
         form = RetiradaForm()
 
-    return render(request, 'cadastro.html', {'form': form})
+    return render(request, 'retirada/cadastro.html', {'form': form})
 
 
 def editar_retirada(request, retirada_id):
@@ -38,7 +38,7 @@ def editar_retirada(request, retirada_id):
     else:
         form = RetiradaForm(instance=retirada)
 
-    return render(request, 'cadastro.html', {'form': form})
+    return render(request, 'retirada/cadastro.html', {'form': form})
 
 
 def excluir_retirada(request, retirada_id):
@@ -49,4 +49,4 @@ def excluir_retirada(request, retirada_id):
         retirada.delete()
         return redirect('lista_retiradas')
 
-    return render(request, 'lista.html')
+    return render(request, 'retirada/lista.html')

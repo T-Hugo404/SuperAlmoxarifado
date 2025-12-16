@@ -12,7 +12,7 @@ def lista_produtos(request):
     produtos = Produto.objects.all()
 
     context = {'produtos': produtos}
-    return render(request, 'lista.html', context)
+    return render(request, 'produtos/lista.html', context)
 
 
 def cadastrar_produto(request):
@@ -25,7 +25,7 @@ def cadastrar_produto(request):
     else:
         form = ProdutoForm()
 
-    return render(request, 'cadastro.html', {'form': form})
+    return render(request, 'produtos/cadastro.html', {'form': form})
 
 
 def editar_produto(request, produto_id):
@@ -41,7 +41,7 @@ def editar_produto(request, produto_id):
     else:
         form = ProdutoForm(instance=produto)
 
-    return render(request, 'cadastro.html', {'form': form})
+    return render(request, 'produtos/cadastro.html', {'form': form})
 
 
 def excluir_produto(request, produto_id):
@@ -52,4 +52,4 @@ def excluir_produto(request, produto_id):
         produto.delete()
         return redirect('lista_produtos')
 
-    return render(request, 'lista.html')
+    return render(request, 'produtos/lista.html')
