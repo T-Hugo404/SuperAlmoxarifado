@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    #telas home
+    'home',
+    
     #Usuarios do sistema
     'apps.fornecedores',
     'apps.usuarios',
