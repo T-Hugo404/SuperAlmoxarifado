@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<h1>Lista Usuarios</h1>
+<a href="{% url 'cadastrar_usuario' %}">CADASTRAR NOVO USUARIO</a>
+<ul>
+    {% for usuario in Usuarios %}
+        <li>
+            {{ usuario.nome_empresa }} ({{ usuario.email | lower }}) | 
+            <a href="{% url 'editar_usuario' usuario.id %}">EDITART</a> | 
+
+            <form action= "{% url 'excluir_usuario' usuario.id %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
+                <button type="submit">Excluir</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

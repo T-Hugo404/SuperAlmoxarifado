@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<h1>Lista Retiradas</h1>
+<a href="{% url 'cadastrar_retirada' %}">CADASTRAR NOVA RETIRADA</a>
+<ul>
+    {% for retirada in retiradas %}
+        <li>
+            {{ retirada.nome_empresa }} ({{ retirada.email | lower }}) | 
+            <a href="{% url 'editar_retirada' retirada.id %}">EDITART</a> | 
+
+            <form action= "{% url 'excluir_retieditar_retirada' retirada.id %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="retirada_id" value="{{ retirada.id }}">
+                <button type="submit">Excluir</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

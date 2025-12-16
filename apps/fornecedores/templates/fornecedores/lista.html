@@ -2,10 +2,20 @@
 {% block conteudo %}
 
 <h1>Lista Fornecedores</h1>
+<a href="{% url 'cadastrar_fornecedor' %}">CADASTRAR NOVO FORNECEDOR</a>
 <ul>
     {% for forn in fornecedores %}
-        <li>{{ forn.nome_empresa }} ({{ forn.email | lower }})<li>
-        {% endfor %}
+        <li>
+            {{ forn.nome_empresa }} ({{ forn.email | lower }}) | 
+            <a href="{% url 'editar_fornecedor' forn.id %}">EDITART</a> | 
+
+            <form action= "{% url 'excluir_fornecedor' forn.id %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="forncedor_id" value="{{ forn.id }}">
+                <button type="submit">Excluir</button>
+            </form>
+        </li>
+    {% endfor %}
 </ul>
 
 {% endblock %}

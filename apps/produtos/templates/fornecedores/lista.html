@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<h1>Lista Produtos</h1>
+<a href="{% url 'cadastrar_fornecedor' %}">CADASTRAR NOVO PRODUTO</a>
+<ul>
+    {% for produto in produtos %}
+        <li>
+            {{ produto.nome_empresa }} ({{ produto.email | lower }}) | 
+            <a href="{% url 'editar_produto' produto.id %}">EDITART</a> | 
+
+            <form action= "{% url 'excluir_produto' produto.id %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="produto_id" value="{{ produto.id }}">
+                <button type="submit">Excluir</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
